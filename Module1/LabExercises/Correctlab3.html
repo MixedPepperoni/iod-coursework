@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module 1 Exercise 3</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        min-height: 100vh;
+        align-items: stretch;
+      }
+      .column {
+        background: goldenrod;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="column" id="column1">
+        <h1 id="heading1">Hand</h1>
+        <button onclick="Changecolumn1()">Change color?</button>
+        <img
+          src="https://d2culxnxbccemt.cloudfront.net/craft/content/uploads/articles/uploads/2013/07/handjoints.jpg"
+          width="720"
+          height="720"
+          alt="sketch hand"
+        />
+      </div>
+      <div class="column" id="column2">
+        <h1 id="heading2">World</h1>
+        <button onclick="Changecolumn2()">Change space?</button>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/800px-The_Earth_seen_from_Apollo_17.jpg"
+          width="720"
+          height="720"
+          alt="sketch hand"
+        />
+      </div>
+    </div>
+    <script>
+      function Changecolumn1() {
+        document.getElementById("column1").style.backgroundColor = "purple";
+        document.getElementById("heading1").innerText = "Palm";
+        alert("Enjoy the purple!");
+      }
+      function Changecolumn2() {
+        document.getElementById("column2").style.backgroundColor = "green";
+        document.getElementById("heading2").innerText = "Earth";
+        alert("Have some green.");
+      }
+    </script>
+  </body>
+</html>
