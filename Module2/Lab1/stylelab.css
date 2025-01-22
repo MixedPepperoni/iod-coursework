@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: skyblue;
+    text-align: center;
+  }
+  header {
+    color: grey;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+  }
+  button {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 24px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 6px 3px;
+    cursor: pointer;
+  }
+  
