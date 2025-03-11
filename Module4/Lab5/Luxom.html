@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Luxon DateTime Formatting</title>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
+    <!-- reference Luxon library -->
+  </head>
+  <body>
+    <h2>Luxon Date</h2>
+    <!-- container for Luxon output -->
+    <div id="displayLuxon"></div>
+    <script type="text/javascript">
+      (function () {
+        // create a shortcut and a new Luxon date
+        const DateTime = luxon.DateTime;
+
+        let nowLuxon = DateTime.now();
+        let eDisplayLuxon = document.getElementById("displayLuxon");
+        eDisplayLuxon.innerHTML = `<p>Unformatted date: ${nowLuxon}</p>`;
+        //  let oldLuxon = DateTime.utc(2017, 5, 15, 17, 36);
+        // eDisplayLuxon.innerHTML = `<p>Unformatted date: ${oldLuxon}</p>`; Just an exmaple for later.
+        //Exercise #2//
+        let myLuxon = DateTime.now().diff(DateTime.local(1996, 6, 11), [
+          "years",
+          "months",
+          "days",
+        ]);
+        eDisplayLuxon.innerHTML += `<p>Total time: ${myLuxon}</p>`;
+        //Exercise #3//
+        let midLuxon = DateTime.utc(2010, 5, 14);
+        eDisplayLuxon.innerHTML += `<p>Average date: ${midLuxon}</p>`;
+        //Exercise #4//
+
+        let formatted = nowLuxon.toFormat("MMMM dd, yyyy");
+        eDisplayLuxon.innerHTML += `<p>Formatted date: ${formatted}</p>`;
+
+        //  let bfLuxom = DateTime.now().plus({ days: -14 }).toRelativeCalendar()
+        // eDisplayLuxon.innerHTML += `<p>Time: ${bfLuxon}</p>`;WOnt work??
+
+        let newYork = nowLuxon
+          .setZone("America/New_York")
+          .toLocaleString(DateTime.DATETIME_FULL);
+        eDisplayLuxon.innerHTML += `<p>New York date: ${newYork}</p>`;
+        //exercise $5//
+        let london = nowLuxon
+          .setZone("Europe/London")
+          .toLocaleString(DateTime.DATETIME_FULL);
+        eDisplayLuxon.innerHTML += `<p>London date: ${london}</p>`;
+        //Exercise #1//
+        // 27 years, 9 months, 7 days// Means Exercise 3 needs 13.5 years/4,5 months/3.5 days or 13 years 11 months and 3 days= May 14th 2010
+      })();
+    </script>
+  </body>
+</html>
+Using the Luxon library, try to solve the below problems: 1. Calculate the
+number of days between your birthdate and the current date 2. Display the number
+of years, months, and days between your birthdate and current date Example: 24
+years, 8 months, and 26 days 3. Given two dates, display the date closest to the
+current date 4. Given two dates, display whether the first date is before or
+after the second date 5. Display the current time in London

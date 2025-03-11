@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #e3f2fd;
+      }
+      .card {
+        padding: 10px;
+        background-color: lightskyblue;
+        border: 3px solid blueviolet;
+        border-radius: 6px;
+        margin-bottom: 18px;
+        width: 720px;
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 3em;
+        padding: 0 0 10px 0;
+      }
+      .card-description {
+        font-weight: 400;
+        font-size: 2em;
+      }
+      .card-image{
+        height: 300px;
+        width: 240px;
+      }
+      .portfolio {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="card-template">
+      <div class="card">
+        <div class="card-body"></div>
+          <div class="card-title"></div>
+          <div class="card-text"></div>
+          <div class= "portfolio"></div> <!--added portifilo div 4 artist-->
+          
+        </div>
+      </div>
+    </template>
+
+    <template id="image-template">
+      <div> <!--Moving em within div cause the .card and such to tret oto eh same system. mving the tiels above the pcis--> 
+        <div class="card-image-title"></div><!--In sep div means its reusable-->
+        <img class="card-image">
+      </div>
+      
+
+    </template>
+
+
+    <div id="card-list"></div>
+    <script>
+      function addCard(artist) { //added title, text variable for dynamic changes. Changed to age & name to pull from array.
+        // clone the template
+        const cardTemplate = document
+          .getElementById("card-template")
+          .content.cloneNode(true);
+        // populate the template
+        
+        // get the artist name and display it here
+        cardTemplate.querySelector(".card-title").innerText = artist.name;
+
+        artist.portfolio.forEach((image) => {const imageTemplate = document
+          .getElementById("image-template").content.cloneNode(true);
+
+          imageTemplate.querySelector(".card-image-title").innerText = image.title; //displaying but none are appearing. weird. Fucking good enough ask for help//
+          
+          imageTemplate.querySelector(".card-image").innerText.src = image.url; //remember to ask for it to egeth hecked//
+          
+          cardTemplate.querySelector(".portfolio").appendChild(imageTemplate)
+
+        });
+
+
+        // cardTemplate.querySelector(".card-image-title").innerText = artist.portfolio[0].title; // Changed this to title like in add Card(for dynamic changes). Variables allow this. The . is needed to grba class.
+        // cardTemplate.querySelector(".card-image").src = artist.portfolio[0].url;
+    
+        // modify the src property instead of the innertext property
+
+        // template.querySelector(".card-text").innerText = age;
+         //Changed this to text like in add Card(for dynamic changes).Commented out for ex3.
+        // include the populated template into the page
+        document.querySelector("#card-list").appendChild(cardTemplate);
+      }
+      // addCard('This','A test for dynamic chanegs'); // success dynamic test. Manual calling.
+      // addCard('is','A second test');// dyanic test 2. 2nd tempalte. Manual calling.
+      // addCard('Good','A third test'); // daynamic test 3. 3rd template. Manual calling.
+
+//Execise 2/
+
+    //   const users = [
+    //   {name: 'bob', age: 23}, // Chnged variable in addCard() to name & age. 
+    //   {name: 'alice', age: 39},
+    //   {name: 'knob', age: 222},
+    //   {name: 'Cece', age: 19},
+    // ];
+    // users.forEach((user) => {
+    //   addCard(user.name, user.age);
+    // });
+
+    //Exercise 3
+
+    const artist = { //rule of three is reason for dup. 3 makes a better desin then 2, apparently. odds >even in esign//
+      name: "Van Gogh",
+      portfolio:[
+        {
+            title: "portrait", 
+            url:"https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image"
+        },
+      
+        {
+            title: "sky", 
+            url:"https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg"
+        },
+        {
+            title: "starry  knight", 
+            url:"https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg" //i didnt bother to hange it till broke is fixe//
+        },
+      ]
+    }
+    const artists =[artist, artist, artist];
+
+   // addCard(artist);//
+   artists.forEach((artist) => {addCard(artist)
+    
+   });
+   //Make sense templates are reuabel peices of code, tyyping out oen is annoying as shit//
+
+    </script>
+  </body>
+</html>
