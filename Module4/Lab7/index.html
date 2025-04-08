@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Fake sites</title>
+ <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+</head>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Homepage</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Cookin oil types</a></li>
+              <li><a class="dropdown-item" href="#">Candy Section</a></li>
+              <li><a class="dropdown-item" href="#">Everyday Essentials</a></li>
+              <li><a class="dropdown-item" href="#">Animal Protein Sources</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+<body>
+ <!-- Prepare a DOM with a defined width and height for ECharts -->
+ <div id="main" style="width: 900px;height:600px;"></div>
+ <div class="card" style="width: 18rem;">
+  <img src="https://www.andersonintl.com/wp-content/uploads/2022/12/Anderson-peanut-oil-extraction.jpg" class="card-img-top" alt="A container of cooking oil" width="720" height="720">
+  <div class="card-body">
+  <h5 class="card-title">Cooking Oil</h5>
+  <p class="card-text">Oil for culinary use: Safe for human consumption</p>
+  <a href="#" class="btn btn-primary">Link</a>
+  <div class="card" style="width: 18rem;">
+    <img src="https://www.taffytown.com/cdn/shop/products/488-blueberry_e8a5762d-8144-4ad5-ae49-7081e595fd60_600x.png?v=1609369278" class="card-img-top" alt="A container of cooking oil" width="720" height="720">
+    <div class="card-body">
+    <h5 class="card-title">Candy</h5>
+    <p class="card-text">Sweets for all ages</p>
+    <a href="#" class="btn btn-primary">Link</a>
+  <div class="card" style="width: 18rem;">
+      <img src="https://i5.walmartimages.com/seo/Energizer-MAX-Alkaline-AA-Batteries-12-Pack_31a6df0b-dc92-4a4e-98a7-cc50dabb0c8d_1.403d3ac12f102b406df4467273f1e341.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF" class="card-img-top" alt="A container of cooking oil" width="720" height="720">
+      <div class="card-body">
+      <h5 class="card-title">Everyday Essentials</h5>
+      <p class="card-text">Everyday Essentials for living day to day</p>
+      <a href="#" class="btn btn-primary">Link</a>
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.kitchensanctuary.com/wp-content/uploads/2021/09/How-to-cook-the-perfect-steak-tall-FS.webp" class="card-img-top" alt="A container of cooking oil" width="720" height="720">
+        <div class="card-body">
+        <h5 class="card-title">Animal Protein Sources</h5>
+        <p class="card-text">Animal Protein: Meat, Dairy & Eggs. Eat like a Mongol Hun.</p>
+        <a href="#" class="btn btn-primary">Link</a>
+  </div>
+  </div>
+ 
+ <script type="text/javascript">
+ // Specify the configuration items and data for the chart
+ let options = {
+ title: { text: 'Fake Grocery Store Website' },
+ xAxis: {
+ data: ['Cooking Oil', 'Candy', 'Essientals', 'Protein']
+ },
+ yAxis: {},
+ series: [{ 
+ name: '# products typically purchased(%)',
+ type: 'bar',
+ data: [10, 10, 50, 30]
+ }]
+ };
+ fetch('https://fakestoreapi.com/products')
+ .then((response) => response.json())
+ .then((json) => {
+ console.log(json)
+ // use this JSON to find and set correct option data for the chart
+ })
+ .then(() => {
+ // Display the chart
+ myChart.setOption(options);
+ })
+ // Initialize the echarts instance based on the prepared div
+ let myChart = echarts.init(document.getElementById('main'));
+ </script>
+</body>
+</html>

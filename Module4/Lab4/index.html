@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        background: white;
+        animation: backg 6s linear infinite;
+      }
+      div {
+        width: 120px;
+        height: 120px;
+        background-color: red;
+        position: relative;
+        animation-name: shifter;
+        animation-duration: 6s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+      }
+      @keyframes shifter {
+        0% {
+          background-color: red;
+          left: 0px;
+          top: 0px;
+        }
+        50% {
+          background-color: purple;
+          left: 0px;
+          top: 240px;
+        }
+        100% {
+          background-color: blue;
+          left: 0px;
+          top: 480px;
+        }
+      }
+      @keyframes backg {
+        0% {
+          background-color: white;
+        }
+        20% {
+          background-color: yellow;
+        }
+        40% {
+          background-color: red;
+        }
+        60% {
+          background-color: orange;
+        }
+        80% {
+          background-color: red;
+        }
+        100% {
+          background-color: white;
+        }
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The moving SQR & shifting BGR.</title>
+  </head>
+  <body>
+    <div></div>
+    <p>This should work perfectly now.</p>
+  </body>
+</html>
