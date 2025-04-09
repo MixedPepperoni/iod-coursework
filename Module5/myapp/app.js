@@ -4,6 +4,7 @@ const port = 3000
 // map all routes to the express app
 const calculatorRoutes =
 require('./routes/calculatorRoutes');
+app.use("/", express.static("public"));
 app.use('/calculator', calculatorRoutes);
 // export the app
 module.exports = app;

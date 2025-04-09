@@ -5,7 +5,6 @@
 //  swaggerUi.serve,
 //  swaggerUi.setup(swaggerDocument)
 // );
-const calculatorRoutes = require("./routes/calculatorRoutes"); // I think I meesed up he index.js. Review notes to correct it. Is this causing problems with APP????
 
 // const express = require("express");
 const app = require('./app');
@@ -19,8 +18,6 @@ const port = 3000;
 
 
 
-// app.use("/", express.static("public")); // For public file directory
-
 // app.use("/mytest", testRoutes); //binds it to mytestroutes code. js is to sepcify the file type.
 
 // app.get('/', (req, res) => {
@@ -32,7 +29,6 @@ const port = 3000;
 //   res.send("Nothing here");
 // });
 
-app.use('/calculator', calculatorRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}...`);
