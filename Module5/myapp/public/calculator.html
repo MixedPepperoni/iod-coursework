@@ -13,7 +13,7 @@
       <button onclick="getResult('multiply')">Multiply</button>
     </div>
     <br /><br />
-    <div>Results<span id="results"></span></div>
+    <div>Results: <span id="results"></span></div>
 
     <script>
       function getResult(operation) {
@@ -27,9 +27,7 @@
           return;
         }
         // This corrected suggested/Danel taught. Seems isue wiith fethc?
-        let url = `\Module5\myapp\app.js/${operation}?num1=${num1}&num2=${num2}`; // shouldnt this pass through my app in the orpeper chain of command?
-        // Siad chian? should it be app>Suer>Controller> Back here to work or am I missthinking the correct steps?
-        //Ask about crrecting jest if I should??? Test
+        let url =`/calculator/${operation}?num1=${num1}&num2=${num2}`; // just need oeprations nums to ge url. Issue it was not workign before. fixed by add `/calculator to code to connect it to app and index.
         
         fetch(url)
           .then((res) => res.json())
@@ -42,5 +40,5 @@
           });
       }
     </script>
-  </body> <!--the issue? The bdody tag was inside script-->
+  </body> 
 </html>
