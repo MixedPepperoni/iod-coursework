@@ -1,6 +1,44 @@
-<html>
-  <title>My first page</title>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Calculator: Serverside</title>
+  </head>
   <body>
-    <h1>Hello Friends</h1>
-  </body>
+    <label>1.Number:<input id="num1" type="number" /></label><br />
+    <label>2.Number:<input id="num2" type="number" /></label><br /><br />
+    <div>
+      <button onclick="getResult('add')">Add</button>
+      <button onclick="getResult('sub')">Subtract</button>
+      <button onclick="getResult('divide')">Divide</button>
+      <button onclick="getResult('multiply')">Multiply</button>
+    </div>
+    <br /><br />
+    <div>Results: <span id="results"></span></div>
+
+    <script>
+      function getResult(operation) {
+        // slight errpr fixed. Was operations not operation.
+        const num1 = document.getElementById("num1").value;
+        const num2 = document.getElementById("num2").value;
+
+        // prevent empty input. OG HTML was o large, Daniel siggest was clearer.
+        if (!num1 || !num2) {
+          document.getElementById("results").innerText = "Enter both numbers.";
+          return;
+        }
+        // This corrected suggested/Danel taught. Seems isue wiith fethc?
+        let url =`/calculator/${operation}?num1=${num1}&num2=${num2}`; // just need oeprations nums to ge url. Issue it was not workign before. fixed by add `/calculator to code to connect it to app and index.
+        
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("results").innerText = data.result;
+          })
+          .catch((err) => {
+            console.error(err);
+            document.getElementById("results").innerText = "ERROR";
+          });
+      }
+    </script>
+  </body> 
 </html>

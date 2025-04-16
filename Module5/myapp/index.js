@@ -1,32 +1,17 @@
-const app = require('./app');
+const express = require('express');
+const path = require('path'); // Required to resolve paths
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+const app = require('./app'); // Import the app from app.js
 const port = 3000;
 
+// Serve static files (e.g., index.html) from the 'public' folder
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Swagger UI for API documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// import all calculator routes (up the top)
-
-
-// const testRoutes = require("./routes/myTestRoutes.js"); //info like this should be at top of file
-
-// const app = express(); //kept incase of issues
-
-
-
-// app.use("/mytest", testRoutes); //binds it to mytestroutes code. js is to sepcify the file type.
-
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-//  })
-
-// app.get("/*", (req, res) => {
-//   // * is a catch all for non specifc url. Ex: 300678 = Nothing here//
-//   res.send("Nothing here");
-// });
-
-
+// Start the server
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}...`);
-});
-// app.use("/", express.static("public"));
-//taskkill /f /im node.exe// to kill in use ports
-
+}); //worked perfecttly, thanks chat gpt//
