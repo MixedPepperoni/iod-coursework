@@ -13,6 +13,8 @@ import Emoji from '../components/Emoji';
 // import Bomb from '../components/Bomb';// seems to work
 import Calculator from "../components/Calculator";
 
+
+
 // Add this in App.jsx ABOVE the App component
 function ExampleComponent() {
   return (
