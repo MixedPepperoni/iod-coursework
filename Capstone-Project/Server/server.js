@@ -1,35 +1,46 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./swagger"); //swagger.js?
+const itemsRoutes = require("./routes/items");
 
 const app = express();
+
+// our Middleware
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
-mongoose.connect('mongodb://127.0.0.1:27017/lunchbreak')
-  .then(() => console.log('Connected to MongoDB'))
+// MongoDB connect
+mongoose.connect("mongodb://127.0.0.1:27017/lunchbreak")
+  .then(() => console.log("Connected to MongoDB"))
   .catch(err => {
-    console.error('MongoDB connection error:', err.message, err.stack);
+    console.error("MongoDB connection error:", err.message);
     process.exit(1);
   });
 
-// Health check route (only one, before app.listen)
-app.get('/test', (req, res) => {
-  res.send('Test route works!');
+// Swagger UI. Mean it right i think
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// Health check 
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "OK", mongodb: mongoose.connection.readyState });
 });
 
-app.get('/api/health', (req, res) => {
-  console.log('Health check requested');  // for debugging
-  res.status(200).json({ status: 'OK', mongodb: mongoose.connection.readyState });
+// API-Routes
+app.use("/api/items", itemsRoutes);
+
+// the Root endpoints? Check to ensure working
+app.get("/", (req, res) => {
+  res.send("API is running");
 });
 
-// Import routes
-const itemsRoutes = require('./routes/items');
+// swagger.json
+app.get("/swagger.json", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerSpec);
+});
 
-// Use routes
-app.use('/api/items', itemsRoutes);
-
-// Start server
+// Start server with this
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

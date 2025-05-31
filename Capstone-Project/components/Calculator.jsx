@@ -8,7 +8,7 @@ function Calculator() {
   const [operator, setOperator] = useState("+");
   const [result, setResult] = useState(null);
 
-  // The Calculator 
+  // The Calculator
   const handleCalculations = () => {
     const number1 = parseFloat(num1);
     const number2 = parseFloat(num2);
@@ -75,4 +75,4 @@ function Calculator() {
 
 export default Calculator;
 
-//GOiing back to drawiing baord on this function//
+//GOiing back to drawiing baord on this function// actyally we jsut crappped it.
